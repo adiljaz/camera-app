@@ -4,7 +4,7 @@ import 'package:hive_flutter/adapters.dart';
 
 ValueNotifier<List<Cameramodel>> cameranotifier = ValueNotifier([]);
 
-Future<void> addcamera(Cameramodel value) async {
+Future<void>addcamera(Cameramodel value) async {
  
 
  

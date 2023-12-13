@@ -8,33 +8,29 @@ import 'package:image_picker/image_picker.dart';
 
 // ignore: must_be_immutable
 class Home extends StatefulWidget {
-   Home({super.key});
+  Home({super.key});
 
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  File?image;
+  File? image;
 
   void pickImage() async {
-    final  image =  await ImagePicker().pickImage(source: ImageSource.camera);
+    final image = await ImagePicker().pickImage(source: ImageSource.camera);
 
-    if(image==null){
+    if (image == null) {
       return;
     }
-      final imagestorage= File(image.path);
+    final imagestorage = File(image.path);
 
-      setState(() {
+    setState(() {
+      this.image = imagestorage;
+    });
 
-        this.image=imagestorage;
-        
-      });
-
-      final cameramodel= Cameramodel(camera: imagestorage.path);
-      addcamera(cameramodel);
-     
-    
+    final cameramodel = Cameramodel(camera: imagestorage.path);
+    addcamera(cameramodel);
   }
 
   @override
@@ -46,7 +42,17 @@ class _HomeState extends State<Home> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
-             child: image != null ? Image.file(image!,width: 200, height:200,) : Image.asset('images/sd1.png' ,width: 50, height:  50,), // Display either the picked image or a placeholder
+            child: image != null
+                ? Image.file(
+                    image!,
+                    width: 200,
+                    height: 200,
+                  )
+                : Image.asset(
+                    'images/sd1.png',
+                    width: 50,
+                    height: 50,
+                  ), // Display either the picked image or a placeholder
           ),
           SizedBox(
             height: 200,
